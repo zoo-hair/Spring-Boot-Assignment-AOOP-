@@ -1,7 +1,7 @@
 # 📚 Spring Boot Library Management System
 
-**Course:** Advanced Object-Oriented Programming Laboratory (CSE 2118)
-**Assignment:** Week Five – Database & Spring Boot
+**Course:** Advanced Object-Oriented Programming Laboratory (CSE 2118)  
+**Assignment:** Week Five – Database & Spring Boot  
 **Technology:** Spring Boot, Spring Data JPA, H2 Database
 
 ---
@@ -9,6 +9,7 @@
 ## 📌 Project Overview
 
 This project is a **simple Library Management System** built using **Spring Boot**.
+
 It demonstrates core concepts taught in the course, including:
 
 * Layered architecture (Controller → Service → Repository)
@@ -28,25 +29,47 @@ The system allows:
 ## 🏗 Project Structure
 
 ```
-src/main/java/com/weekFive/WeekFiveDb/
-├── controller/
-│   ├── BookController.java
-│   ├── MemberController.java
-│   └── LibraryController.java
-├── service/
-│   ├── BookService.java
-│   ├── MemberService.java
-│   └── LibraryService.java
-├── repository/
-│   ├── BookRepository.java
-│   └── MemberRepository.java
-├── model/
-│   ├── Book.java
-│   └── Member.java
-└── WeekFiveDbApplication.java
-
-src/main/resources/
-└── application.yml
+├── settings.gradle
+├── .gitattributes
+├── gradle
+│   └── wrapper
+│       ├── gradle-wrapper.jar
+│       └── gradle-wrapper.properties
+├── src
+│   ├── test
+│   │   └── java
+│   │       └── com
+│   │           └── weekFive
+│   │               └── weekFiveDb
+│   │                   └── WeekFiveDbApplicationTests.java
+│   └── main
+│       ├── resources
+│       │   └── application.yml
+│       └── java
+│           └── com
+│               └── weekFive
+│                   └── weekFiveDb
+│                       ├── WeekFiveDbApplication.java
+│                       ├── repository
+│                       │   ├── MemberRepository.java
+│                       │   └── BookRepository.java
+│                       ├── config
+│                       │   └── WebConfig.java
+│                       ├── service
+│                       │   ├── LibraryService.java
+│                       │   ├── MemberService.java
+│                       │   └── BookService.java
+│                       ├── controller
+│                       │   ├── LibraryController.java
+│                       │   ├── MemberController.java
+│                       │   └── BookController.java
+│                       └── model
+│                           ├── Member.java
+│                           └── Book.java
+├── .gitignore
+├── gradlew.bat
+├── README.md
+└── gradlew
 ```
 
 ---
@@ -87,7 +110,6 @@ server:
 ```
 
 H2 Console URL:
-
 ```
 http://localhost:8080/h2-console
 ```
@@ -98,20 +120,30 @@ http://localhost:8080/h2-console
 
 ### Prerequisites
 
-* JDK 17 installed
-* IntelliJ IDEA
+* JDK 17 or higher installed
+* Gradle (included via Gradle wrapper)
 
 ### Steps
 
+#### Option 1: Using Gradle Wrapper (Recommended)
+
+**On Windows:**
+```bash
+gradlew.bat clean bootRun
+```
+
+**On Linux/Mac:**
 ```bash
 ./gradlew clean bootRun
 ```
 
-OR run directly from IntelliJ using the ▶️ button on:
+#### Option 2: Using IDE (IntelliJ IDEA)
 
-```
-WeekFiveDbApplication.java
-```
+1. Open the project in IntelliJ IDEA
+2. Wait for Gradle to sync dependencies
+3. Run directly using the ▶️ button on `WeekFiveDbApplication.java`
+
+The application will start on `http://localhost:8080`
 
 ---
 
@@ -187,11 +219,24 @@ Invalid input returns **400 Bad Request**.
 
 ---
 
+## 🔧 WebConfig
+
+The project includes CORS configuration (`WebConfig.java`) to allow cross-origin requests from the frontend application running on `http://localhost:3000`.
+
+---
+
+## 📝 Notes
+
+* This project uses an **H2 in-memory database**, so data will be lost when the application stops
+* The database is accessible via H2 Console at `/h2-console`
+* Default credentials: username: `sa`, password: (empty)
+
+---
 
 ## 👨‍🎓 Author
 
-**Name:** Juhair Islam Sami
-**Department:** Computer Science & Engineering
+**Name:** Juhair Islam Sami  
+**Department:** Computer Science & Engineering  
 **Course:** CSE 2118 – Advanced Object-Oriented Programming Laboratory
 
 ---
